@@ -1,0 +1,19 @@
+{
+    "name": "Military Filter",
+    "description": "click to see only military filters",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["storage", "activeTab"],
+    "action": {
+        "default_popup": "index.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://*.flightradar24.com/*"],
+            "js": ["content.js"]
+        }
+    ]
+}
