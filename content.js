@@ -1,10 +1,13 @@
 function filter(type) {
-    const b = document.querySelector(".add");
-    const r = document
-        .querySelector("#fr24_FilterList")
-        .querySelector(".remove");
-    if (r) r.click();
+    const applyFilterButton = document.querySelector(".add");
+    const r = document.getElementsByClassName(
+        "w-full rounded-md px-6 py-2 transition-colors font-semibold text-white bg-blue-500 hover:bg-blue-400 disabled:bg-gray-700 flex justify-center disabled:cursor-not-allowed disabled:opacity-75"
+    );
+    // .querySelector(".remove");
+    if (r[0]) r[0].click();
     let filterSettings;
+    // Enter airline name or ICAO code
+    // Enter aircraft ICAO code
     if (type === 1) {
         filterSettings = {
             placeholder: "eg. B744,A321 or B73",
@@ -29,8 +32,8 @@ function filter(type) {
     setTimeout(function () {
         p.click();
         a.value = filterSettings.valueStringToSearch;
-        b.disabled = false;
-        b.click();
+        applyFilterButton.disabled = false;
+        applyFilterButton.click();
     }, 500);
 }
 
