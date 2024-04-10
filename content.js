@@ -52,7 +52,7 @@ async function filter(type) {
                     "absolute right-0 mr-2 rounded-md p-2"
                 );
                 closeFilters[0].click()
-            }, 500);
+            }, 1000);
         }
         const addNewFilterButtonList = document.getElementsByClassName(
             "w-full rounded-md px-6 py-2 transition-colors font-semibold text-white bg-blue-500 hover:bg-blue-400 disabled:bg-gray-700 flex justify-center disabled:cursor-not-allowed disabled:opacity-75"
@@ -81,14 +81,14 @@ async function filter(type) {
 
                 // const overflow =
                 //     document.getElementsByClassName("overflow-hidden");
-            }, 500);
-        }, 500);
+            }, 1000);
+        }, 1000);
         //    aircraftButton.click();
         // p.click();
         // a.value = filterSettings.valueStringToSearch;
         // b.disabled = false;
         // b.click();
-    }, 500);
+    }, 1000);
 
     document.body.onkeyup = function (e) {
         if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
@@ -106,15 +106,15 @@ async function filter(type) {
                     "absolute right-0 mr-2 rounded-md p-2"
                 );
                 saveButton[0].click();
-            }, 500);
+            }, 1000);
         }
     };
 }
 
-// chrome.runtime.onMessage.addListener((message) => {
-//     if (message.type === "first-filter") {
-//         filter(1);
-//     } else if (message.type === "second-filter") {
-//         filter(2);
-//     }
-// });
+chrome.runtime.onMessage.addListener((message) => {
+    if (message.type === "first-filter") {
+        filter(1);
+    } else if (message.type === "second-filter") {
+        filter(2);
+    }
+});
