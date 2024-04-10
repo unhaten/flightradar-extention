@@ -51,28 +51,26 @@ async function filter(type) {
                 const closeFilters = document.getElementsByClassName(
                     "absolute right-0 mr-2 rounded-md p-2"
                 );
-                closeFilters[0].click()
+                closeFilters[0].click();
             }, 1000);
         }
-        const addNewFilterButtonList = document.getElementsByClassName(
+        const addNewFilterButton = document.getElementsByClassName(
             "w-full rounded-md px-6 py-2 transition-colors font-semibold text-white bg-blue-500 hover:bg-blue-400 disabled:bg-gray-700 flex justify-center disabled:cursor-not-allowed disabled:opacity-75"
         );
-        addNewFilterButtonList.forEach((item) => {
-            if (item.innerText === "Add new filter") {
-                addNewFilterButton = item;
-            }
-        });
-        await addNewFilterButton.click();
+
+        await addNewFilterButton[0].click();
         setTimeout(async function () {
             const filterButtonList = document.getElementsByClassName(
                 "flex h-12 w-full items-center justify-between border border-gray-700 bg-gray-600 py-2.5 pl-2 pr-0.5 font-semibold text-gray-1300 disabled:cursor-not-allowed disabled:opacity-50 rounded-md"
             );
-            filterButtonList.forEach((item) => {
-                if (item.innerText === filterSettings.selectValue) {
-                    aircraftButton = item;
-                }
-            });
-            await aircraftButton.click();
+            if (type === 1) {
+                const filterBtn = filterButtonList[1];
+                await filterBtn.click();
+            } else if (type === 2) {
+                const filterBtn = filterButtonList[0];
+                await filterBtn.click();
+            }
+
             setTimeout(async function () {
                 const aircraftLabel = document.getElementsByClassName(
                     "fr24-key-nav mr-10 block h-10 w-full !rounded-md border-gray-600 pl-10 leading-8 text-gray-1300 placeholder:text-gray-800 focus:border-yellow-500 focus:ring-yellow-500"
@@ -83,12 +81,12 @@ async function filter(type) {
                 //     document.getElementsByClassName("overflow-hidden");
             }, 1000);
         }, 1000);
-        //    aircraftButton.click();
-        // p.click();
-        // a.value = filterSettings.valueStringToSearch;
-        // b.disabled = false;
-        // b.click();
     }, 1000);
+    //    aircraftButton.click();
+    // p.click();
+    // a.value = filterSettings.valueStringToSearch;
+    // b.disabled = false;
+    // b.click();
 
     document.body.onkeyup = function (e) {
         if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
